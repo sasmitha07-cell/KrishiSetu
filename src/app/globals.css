@@ -1,0 +1,1568 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ==================================================== */
+  /* KRISHISETU "CALM DENSITY" DESIGN TOKENS */
+  /* ==================================================== */
+
+  /* Surface & Canvas Palette (Warm Light Earth) */
+  --farm-bg: #FAF7F2;            /* Warm Ivory / Raw Cotton */
+  --farm-surface: #FFFFFF;       /* Crisp White Canvas */
+  --farm-surface-warm: #F5EFE6;  /* Soft Silt Sand */
+  --farm-surface-sun: #FDF9EE;   /* Gentle Morning Sunlight */
+  --farm-surface-moss: #F0F6F2;  /* Fresh Vegetative Tint */
+  --farm-surface-clay: #FAF1EC;  /* Warm Terracotta Wash */
+  
+  /* Hairline Boundary Ridges */
+  --farm-border: #E4DCC8;        /* Subtle Dried Clay */
+  --farm-border-subtle: #EFE9DC; /* Faint Furrow Line */
+  --farm-border-focus: #1E3A2F;  /* Deep Foliage Focus */
+
+  /* Semantic Agricultural Hues */
+  --crop-green: #1E3A2F;         /* Deep Living Foliage (Primary Ink / Accents) */
+  --crop-green-mid: #2D5A46;     /* Healthy Canopy */
+  --crop-green-light: #EBF3EE;   /* Leaf Wash Background */
+  --crop-green-border: #BCD5C6;  /* Sprout Border */
+
+  --earth-terracotta: #C85A32;   /* Silt / Red Clay / Active Action */
+  --earth-terracotta-light: #FBF0EB;
+  --earth-terracotta-border: #E8BFB0;
+
+  --harvest-gold: #C2881E;       /* Ripening Grain / Watch Warning */
+  --harvest-gold-light: #FDF7E7;
+  --harvest-gold-border: #EAD093;
+
+  --monsoon-blue: #1D587A;       /* Rain / Hydration */
+  --monsoon-blue-light: #EDF5F9;
+  --monsoon-blue-border: #B6D7E8;
+
+  --alert-red: #B83226;          /* Urgent Action / Pathogen */
+  --alert-red-light: #FDF2F0;
+  --alert-red-border: #EAB6B0;
+
+  /* Ink Hierarchy */
+  --ink-primary: #18221D;        /* Deep Peat Charcoal */
+  --ink-secondary: #47544D;      /* Weathered Stone */
+  --ink-muted: #7A8780;          /* Soft Morning Mist */
+  --ink-inverse: #FFFFFF;
+
+  /* Typography Scale */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+
+  /* Spacing Grid (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 9999px;
+
+  /* Tactile Elevation */
+  --shadow-tactile: 0 1px 3px rgba(24, 34, 29, 0.04), 0 4px 12px rgba(24, 34, 29, 0.03);
+  --shadow-lifted: 0 4px 20px rgba(24, 34, 29, 0.08), 0 1px 3px rgba(24, 34, 29, 0.04);
+}
+
+/* ==================================================== */
+/* GLOBAL RESET & BASE STYLES */
+/* ==================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--farm-bg);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  line-height: 1.5;
+  background-image: 
+    radial-gradient(ellipse at 85% 5%, rgba(194, 136, 30, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 95%, rgba(30, 58, 47, 0.04) 0%, transparent 60%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography Utility Classes */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ink-primary);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+p {
+  color: var(--ink-secondary);
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.16s ease-in-out;
+}
+
+/* ==================================================== */
+/* APPLICATION SHELL & LAYOUT GRID */
+/* ==================================================== */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    padding: 0 var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-container {
+    padding: 0 var(--space-8);
+  }
+}
+
+/* Master Header */
+.master-header {
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--farm-border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: var(--space-3) 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background-color: var(--crop-green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--crop-green-border);
+}
+
+.brand-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--crop-green);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.brand-dpg-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--earth-terracotta);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Pill Selectors */
+.pill-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background-color: var(--farm-surface-warm);
+  border: 1px solid var(--farm-border);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.pill-select {
+  background: transparent;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--crop-green);
+  outline: none;
+  cursor: pointer;
+}
+
+.lang-toggle-group {
+  display: flex;
+  background-color: var(--farm-surface-warm);
+  border: 1px solid var(--farm-border);
+  border-radius: var(--radius-full);
+  padding: 2px;
+}
+
+.lang-toggle-btn {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--ink-muted);
+  background: transparent;
+}
+
+.lang-toggle-btn.active {
+  background-color: var(--crop-green);
+  color: #FFFFFF;
+}
+
+.btn-header-grid {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--crop-green-light);
+  border: 1px solid var(--crop-green-border);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--crop-green);
+}
+
+/* ==================================================== */
+/* DESKTOP SPLIT VIEW & NAVIGATION RAIL */
+/* ==================================================== */
+.main-layout-grid {
+  display: flex;
+  flex: 1;
+  padding-bottom: 74px; /* Space for mobile nav */
+}
+
+@media (min-width: 1024px) {
+  .main-layout-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--space-8);
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-12);
+  }
+}
+
+/* Desktop Sidebar Nav */
+.desktop-nav-rail {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav-rail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+  }
+}
+
+.rail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.rail-item:hover {
+  background-color: var(--farm-surface-warm);
+  color: var(--ink-primary);
+}
+
+.rail-item.active {
+  background-color: var(--crop-green);
+  color: #FFFFFF;
+}
+
+.rail-item.active svg {
+  stroke: #FFFFFF;
+}
+
+/* Farm Sub-Context Banner (Active Farmer & Plot) */
+.farm-context-strip {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-tactile);
+}
+
+.farmer-identity-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.avatar-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--crop-green);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.farmer-headline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.farmer-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+}
+
+.farmer-location-tag {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.farmer-plot-desc {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  margin-top: 1px;
+}
+
+.btn-setup-farm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--earth-terracotta);
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.btn-setup-farm:hover {
+  background-color: #AA4724;
+}
+
+/* ==================================================== */
+/* EDITORIAL SECTION & TYPOGRAPHY SYSTEM */
+/* ==================================================== */
+.editorial-section {
+  margin-bottom: var(--space-8);
+}
+
+.editorial-header {
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--farm-border-subtle);
+  padding-bottom: var(--space-2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--earth-terracotta);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.section-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--crop-green);
+  line-height: 1.25;
+}
+
+.section-caption {
+  font-size: 0.8125rem;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+/* ==================================================== */
+/* 1. HOME: CONTINUOUS LIVING STORY ARCHITECTURE */
+/* ==================================================== */
+
+/* Primary Focal Point: Today's Farm Signal (Open Environmental Canvas) */
+.signal-hero-panel {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border);
+  border-left: 5px solid var(--crop-green);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-tactile);
+  position: relative;
+  overflow: hidden;
+}
+
+.signal-hero-panel.urgency-urgent {
+  border-left-color: var(--alert-red);
+  background-color: #FFFDFC;
+}
+
+.signal-hero-panel.urgency-watch {
+  border-left-color: var(--harvest-gold);
+  background-color: #FFFDF8;
+}
+
+.signal-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.signal-urgency-badge {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-urgent {
+  background-color: var(--alert-red-light);
+  color: var(--alert-red);
+}
+
+.badge-watch {
+  background-color: var(--harvest-gold-light);
+  color: var(--harvest-gold);
+}
+
+.badge-info {
+  background-color: var(--crop-green-light);
+  color: var(--crop-green);
+}
+
+.btn-audio-listen {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--farm-surface-warm);
+  border: 1px solid var(--farm-border);
+  color: var(--crop-green);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.btn-audio-listen:hover {
+  background-color: var(--crop-green-light);
+}
+
+.signal-primary-headline {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+  line-height: 1.25;
+  margin-bottom: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .signal-primary-headline {
+    font-size: 1.55rem;
+  }
+}
+
+.signal-primary-body {
+  font-size: 0.95rem;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+  max-width: 720px;
+}
+
+.signal-inline-metrics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--farm-border-subtle);
+  font-size: 0.8125rem;
+}
+
+.metric-datum {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-primary);
+  font-weight: 600;
+}
+
+/* Secondary: Field Condition Summary Matrix */
+.field-signals-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .field-signals-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.signal-box {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+}
+
+.signal-box-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.signal-box-val {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--crop-green);
+  margin-top: 2px;
+}
+
+.signal-box-sub {
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+}
+
+/* Tertiary: Tactile Daily Farm Actions Checklist */
+.tactile-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tactile-action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tactile-action-item:hover {
+  border-color: var(--crop-green-border);
+  background-color: var(--farm-surface-warm);
+}
+
+.tactile-action-item.completed {
+  opacity: 0.6;
+  background-color: #F8F8F8;
+}
+
+.tactile-action-item.completed .action-item-title {
+  text-decoration: line-through;
+}
+
+.action-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--crop-green);
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.action-checkbox.checked {
+  background-color: var(--crop-green);
+}
+
+.action-item-text {
+  flex: 1;
+}
+
+.action-item-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 2px;
+}
+
+.action-category-chip {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: var(--earth-terracotta);
+  text-transform: uppercase;
+}
+
+.action-timing-tag {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.action-item-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.35;
+}
+
+.action-item-reason {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* Grounded Krishi Copilot (Voice & Text Agronomy) */
+.copilot-editorial-panel {
+  background-color: var(--farm-surface-moss);
+  border: 1px solid var(--crop-green-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.copilot-prompt-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--crop-green-border);
+  border-radius: var(--radius-full);
+  padding: 4px 6px;
+}
+
+.mic-action-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--crop-green-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--crop-green);
+}
+
+.mic-action-btn.active-listening {
+  background-color: var(--alert-red);
+  color: #FFFFFF;
+  animation: pulse-ring 1.5s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(184, 50, 38, 0.4); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(184, 50, 38, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(184, 50, 38, 0); }
+}
+
+.copilot-input-field {
+  flex: 1;
+  border: none;
+  font-size: 0.875rem;
+  outline: none;
+  padding: var(--space-1) var(--space-2);
+  background: transparent;
+  color: var(--ink-primary);
+}
+
+.btn-copilot-submit {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--crop-green);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-copilot-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.copilot-output-container {
+  margin-top: var(--space-4);
+  background-color: #FFFFFF;
+  border: 1px solid var(--crop-green-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.grounded-source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--crop-green);
+}
+
+.copilot-response-text {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ink-primary);
+  margin-top: var(--space-2);
+  white-space: pre-line;
+}
+
+/* ==================================================== */
+/* 2. MY CROPS & PHENOLOGY TIMELINE ARCHITECTURE */
+/* ==================================================== */
+
+/* Primary Crop Hero Banner */
+.active-crop-hero {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-tactile);
+}
+
+.plot-nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--farm-border-subtle);
+}
+
+.plot-tab-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  background-color: var(--farm-surface-warm);
+  border: 1px solid var(--farm-border);
+  color: var(--ink-secondary);
+  white-space: nowrap;
+}
+
+.plot-tab-btn.selected {
+  background-color: var(--crop-green);
+  color: #FFFFFF;
+  border-color: var(--crop-green);
+}
+
+.btn-add-plot-pill {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: var(--farm-surface-clay);
+  border: 1px dashed var(--earth-terracotta);
+  color: var(--earth-terracotta);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.crop-hero-headline-group {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.crop-main-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--crop-green);
+}
+
+.crop-sub-variety {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+}
+
+.crop-stage-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--crop-green-light);
+  border: 1px solid var(--crop-green-border);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--crop-green);
+}
+
+/* Disciplined Phenology Rail */
+.phenology-milestone-rail {
+  margin: var(--space-6) 0 var(--space-8) 0;
+}
+
+.rail-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--farm-surface-warm);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.rail-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2D5A46 0%, #1E3A2F 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.rail-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-1);
+  text-align: center;
+}
+
+.milestone-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.node-bullet {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--farm-surface-warm);
+  border: 2px solid var(--farm-border);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+}
+
+.milestone-node.passed .node-bullet {
+  background-color: var(--crop-green);
+  border-color: var(--crop-green);
+  color: #FFFFFF;
+}
+
+.milestone-node.current .node-bullet {
+  background-color: var(--earth-terracotta);
+  border-color: var(--earth-terracotta);
+  color: #FFFFFF;
+  box-shadow: 0 0 0 3px var(--earth-terracotta-light);
+}
+
+.node-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.2;
+}
+
+.node-span {
+  font-size: 0.6875rem;
+  color: var(--ink-muted);
+}
+
+.stage-care-banner {
+  background-color: var(--farm-surface-warm);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .stage-care-banner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.care-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.care-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* ==================================================== */
+/* 3. SOILSENSE: VERTICAL GEOLOGICAL SOIL PROFILE */
+/* ==================================================== */
+.soilsense-profile-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-tactile);
+}
+
+@media (min-width: 768px) {
+  .soilsense-profile-layout {
+    grid-template-columns: 240px 1fr;
+  }
+}
+
+/* The Soil Monolith (Visual Earth Layers) */
+.soil-monolith {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1.5px solid var(--farm-border);
+}
+
+.stratum-surface {
+  background: linear-gradient(180deg, #D4C6AA 0%, #C3B496 100%);
+  padding: var(--space-4);
+  min-height: 90px;
+  border-bottom: 2px dashed #9E8C6C;
+}
+
+.stratum-humus {
+  background: linear-gradient(180deg, #6B4E3B 0%, #523827 100%);
+  color: #FFFFFF;
+  padding: var(--space-4);
+  min-height: 100px;
+  border-bottom: 2px dashed #3D2619;
+}
+
+.stratum-humus .stratum-title, .stratum-humus .stratum-depth {
+  color: #F0E8E1;
+}
+
+.stratum-mineral {
+  background: linear-gradient(180deg, #8A644D 0%, #704F3B 100%);
+  color: #FFFFFF;
+  padding: var(--space-4);
+  min-height: 110px;
+}
+
+.stratum-mineral .stratum-title, .stratum-mineral .stratum-depth {
+  color: #F0E8E1;
+}
+
+.stratum-depth {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+}
+
+.stratum-title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+/* Soil Interpretation Alongside Monolith */
+.soil-interpretation-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.diagnostic-bullet {
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--farm-border-subtle);
+}
+
+.diagnostic-bullet:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.diag-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.diag-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--crop-green);
+}
+
+.diag-status-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.diag-desc {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+}
+
+.diag-action-note {
+  font-size: 0.8125rem;
+  color: var(--crop-green);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ==================================================== */
+/* 4. NEXT CROP RECOMMENDER (3 REGENERATIVE OPTIONS) */
+/* ==================================================== */
+.recommender-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.recommender-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .recommender-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.rec-card-composed {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-tactile);
+}
+
+.rec-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.rec-system-badge {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: var(--crop-green);
+  text-transform: uppercase;
+}
+
+.rec-savings-pill {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: var(--earth-terracotta);
+  background-color: var(--earth-terracotta-light);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+.rec-crop-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--crop-green);
+  line-height: 1.25;
+  margin-bottom: var(--space-2);
+}
+
+.rec-body-text {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+  margin-bottom: var(--space-3);
+}
+
+.rec-mandi-tag {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  border-top: 1px dashed var(--farm-border-subtle);
+  padding-top: var(--space-2);
+}
+
+/* ==================================================== */
+/* 5. CLIMATEGUARD: INTEGRATED WEATHER & ACTION TIMELINE */
+/* ==================================================== */
+.weather-unified-panel {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-tactile);
+}
+
+.forecast-rail-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--farm-border-subtle);
+}
+
+.forecast-day-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-md);
+  background-color: var(--farm-surface-warm);
+  min-width: 68px;
+}
+
+.forecast-day-column.today {
+  background-color: var(--crop-green-light);
+  border: 1.5px solid var(--crop-green);
+}
+
+.day-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.day-icon-wrap {
+  margin: var(--space-2) 0;
+}
+
+.day-temps-inline {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.day-rain-bar {
+  font-size: 0.6875rem;
+  color: var(--monsoon-blue);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Actionable Weather Risk Block */
+.weather-risk-narrative {
+  background-color: #FFFDFC;
+  border-left: 4px solid var(--harvest-gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-4);
+}
+
+.risk-narrative-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+  margin-bottom: 4px;
+}
+
+.risk-narrative-why {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  line-height: 1.45;
+}
+
+.risk-narrative-action {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--crop-green);
+  margin-top: var(--space-2);
+}
+
+/* ==================================================== */
+/* 6. CROPCARE VISION (SCANNER & DIAGNOSTIC RESULT) */
+/* ==================================================== */
+.scanner-viewport-panel {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-tactile);
+}
+
+.optical-frame {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto var(--space-6) auto;
+  aspect-ratio: 4 / 3;
+  border: 2px dashed var(--crop-green-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--farm-surface-warm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.frame-shutter-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--space-4);
+  text-align: center;
+}
+
+.captured-leaf-display {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-trigger-scan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background-color: var(--crop-green);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.btn-trigger-scan:hover {
+  background-color: var(--crop-green-mid);
+}
+
+/* Diagnostic Result Hierarchy */
+.diagnostic-verdict-card {
+  margin-top: var(--space-6);
+  background-color: #FFFFFF;
+  border: 1.5px solid var(--farm-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.verdict-header-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--farm-border-subtle);
+  margin-bottom: var(--space-3);
+}
+
+.verdict-condition-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--crop-green);
+}
+
+.verdict-confidence-meter {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--earth-terracotta);
+  background-color: var(--earth-terracotta-light);
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.ipm-treatment-block {
+  background-color: var(--crop-green-light);
+  border: 1px solid var(--crop-green-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.ipm-treatment-block h5 {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--crop-green);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.ipm-treatment-block p {
+  font-size: 0.8125rem;
+  color: var(--ink-primary);
+  line-height: 1.5;
+}
+
+/* ==================================================== */
+/* 7. PROFILE & EXTENSION SUPPORT CASES */
+/* ==================================================== */
+.profile-overview-panel {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-tactile);
+}
+
+.profile-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .profile-meta-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.meta-field-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.meta-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-top: 2px;
+}
+
+/* Support Cases Timeline */
+.support-cases-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.support-case-node {
+  background-color: var(--farm-surface);
+  border: 1px solid var(--farm-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.case-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.case-id-code {
+  font-family: monospace;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--crop-green);
+}
+
+.case-badge-status {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+}
+
+.status-open {
+  background-color: var(--harvest-gold-light);
+  color: var(--harvest-gold);
+}
+
+.status-under_review {
+  background-color: var(--monsoon-blue-light);
+  color: var(--monsoon-blue);
+}
+
+.status-resolved {
+  background-color: var(--crop-green-light);
+  color: var(--crop-green);
+}
+
+/* ==================================================== */
+/* 8. MOBILE INTEGRATED BOTTOM NAVIGATION */
+/* ==================================================== */
+.integrated-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--farm-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 45;
+  box-shadow: 0 -2px 10px rgba(24, 34, 29, 0.03);
+}
+
+@media (min-width: 1024px) {
+  .integrated-bottom-nav {
+    display: none;
+  }
+}
+
+.mobile-nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--ink-muted);
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+}
+
+.mobile-nav-btn.active {
+  color: var(--crop-green);
+}
+
+.mobile-nav-btn.active svg {
+  stroke-width: 2.5;
+}
+
+.mobile-nav-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+/* ==================================================== */
+/* MODALS & OVERLAYS */
+/* ==================================================== */
+.modal-overlay-scrim {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(24, 34, 29, 0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  z-index: 60;
+}
+
+.modal-dialog-box {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  width: 100%;
+  max-width: 520px;
+  border: 1px solid var(--farm-border);
+  box-shadow: var(--shadow-lifted);
+}
+
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--farm-border-subtle);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.modal-headline {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--crop-green);
+}
+
+.modal-close-icon {
+  background: transparent;
+  color: var(--ink-muted);
+  padding: 4px;
+}
